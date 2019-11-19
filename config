@@ -39,15 +39,17 @@ bindsym $mod+Shift+q kill
 exec --no-startup-id nm-applet
 
 # increase volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 2dB+ unmute
+bindsym XF86AudioRaiseVolume exec pamixer --increase 5
 # reduce volume
-bindsym XF86AudioLowerVolume exec amixer -q set Master 2dB- unmute
+bindsym XF86AudioLowerVolume exec pamixer --decrease 5
 # toggle mute
-
+bindsym XF86AudioMute exec pamixer --toggle-mute
+# start tray entry
+exec --no-startup-id pa-applet
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
 
 # Touchpad controls
 bindsym $mod+Shift+t exec /home/ridhwan/toggletouchpad.sh # toggle touchpad
@@ -134,28 +136,28 @@ bindsym $mod+Shift+9 move container to workspace 9
 bindsym $mod+Shift+0 move container to workspace 10
 
 # alternatively switch to workspace with numpad
-bindsym $mod+KP_1 workspace 1
-bindsym $mod+KP_2 workspace 2
-bindsym $mod+KP_3 workspace 3
-bindsym $mod+KP_4 workspace 4
-bindsym $mod+KP_5 workspace 5
-bindsym $mod+KP_6 workspace 6
-bindsym $mod+KP_7 workspace 7
-bindsym $mod+KP_8 workspace 8
-bindsym $mod+KP_9 workspace 9
-bindsym $mod+KP_0 workspace 10
+bindcode $mod+87 workspace 1
+bindcode $mod+88 workspace 2
+bindcode $mod+89 workspace 3
+bindcode $mod+83 workspace 4
+bindcode $mod+84 workspace 5
+bindcode $mod+85 workspace 6
+bindcode $mod+79 workspace 7
+bindcode $mod+80 workspace 8
+bindcode $mod+81 workspace 9
+bindcode $mod+90 workspace 10
 
 # alternatively move focused container to workspace using numpad
-bindsym $mod+Shift+KP_1 move container to workspace 1
-bindsym $mod+Shift+KP_2 move container to workspace 2
-bindsym $mod+Shift+KP_3 move container to workspace 3
-bindsym $mod+Shift+KP_4 move container to workspace 4
-bindsym $mod+Shift+KP_5 move container to workspace 5
-bindsym $mod+Shift+KP_6 move container to workspace 6
-bindsym $mod+Shift+KP_7 move container to workspace 7
-bindsym $mod+Shift+KP_8 move container to workspace 8
-bindsym $mod+Shift+KP_9 move container to workspace 9
-bindsym $mod+Shift+KP_0 move container to workspace 10
+bindcode $mod+Shift+87 move container to workspace 1
+bindcode $mod+Shift+88 move container to workspace 2
+bindcode $mod+Shift+89 move container to workspace 3
+bindcode $mod+Shift+83 move container to workspace 4
+bindcode $mod+Shift+84 move container to workspace 5
+bindcode $mod+Shift+85 move container to workspace 6
+bindcode $mod+Shift+79 move container to workspace 7
+bindcode $mod+Shift+80 move container to workspace 8
+bindcode $mod+Shift+81 move container to workspace 9
+bindcode $mod+Shift+90 move container to workspace 10
 
 # alternatively switch to workspace left or right
 bindsym $mod+Control+h workspace prev
@@ -217,3 +219,12 @@ bindsym $mod+n exec google-chrome-stable
 
 # power related configs
 # bindsym $mod+Control+h exec i3-sensible-terminal -e sudo pm-hibernate
+
+# background setting
+exec --no-startup-id feh --bg-scale Downloads/ross-sokolovski-UAFXj9dRpwo-unsplash.jpg
+
+# autostart of applications
+exec --no-startup-id i3-msg 'workspace 9; exec google-chrome-stable --app=https://web.whatsapp.com'
+# exec --no-startup-id i3-msg 'sh -c sleep 10'
+exec --no-startup-id i3-msg 'workspace 10; exec google-chrome-stable --app=https://calendar.google.com/calendar/r'
+
